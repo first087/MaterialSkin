@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MaterialSkin.Controls
@@ -74,7 +74,7 @@ namespace MaterialSkin.Controls
 			//always draw default background
 			g.FillRectangle(new SolidBrush(SkinManager.GetApplicationBackgroundColor()), new Rectangle(new Point(e.Bounds.X, 0), e.Bounds.Size));
 			
-			if (e.State.HasFlag(ListViewItemStates.Selected))
+            if ((e.State & ListViewItemStates.Selected) == ListViewItemStates.Selected)
 			{
 				//selected background
 				g.FillRectangle(SkinManager.GetFlatButtonPressedBackgroundBrush(), new Rectangle(new Point(e.Bounds.X, 0), e.Bounds.Size));
