@@ -17,8 +17,10 @@ namespace MaterialSkin.Controls
         [Browsable(false)]
         public MouseState MouseState { get; set; }
 
-
         public override string Text { get { return baseTextBox.Text; } set { baseTextBox.Text = value; } }
+        public new object Tag { get { return baseTextBox.Tag; } set { baseTextBox.Tag = value; } }
+        public new int MaxLength { get { return baseTextBox.MaxLength; } set { baseTextBox.MaxLength = value; } }
+        
         public string SelectedText { get { return baseTextBox.SelectedText; } set { baseTextBox.SelectedText = value; } }
         public string Hint { get { return baseTextBox.Hint; } set { baseTextBox.Hint = value; } }
 
@@ -954,7 +956,7 @@ namespace MaterialSkin.Controls
             {
                 BorderStyle = BorderStyle.None,
                 Font = SkinManager.ROBOTO_REGULAR_11,
-                ForeColor = SkinManager.GetMainTextColor(),
+                ForeColor = SkinManager.GetPrimaryTextColor(),
                 Location = new Point(0, 0),
                 Width = Width,
                 Height = Height - 5
@@ -970,8 +972,12 @@ namespace MaterialSkin.Controls
             BackColorChanged += (sender, args) =>
             {
                 baseTextBox.BackColor = BackColor;
-                baseTextBox.ForeColor = SkinManager.GetMainTextColor();
+                baseTextBox.ForeColor = SkinManager.GetPrimaryTextColor();
             };
+
+			//Fix for tabstop
+			baseTextBox.TabStop = true;
+			this.TabStop = false;
         }
 
         protected override void OnPaint(PaintEventArgs pevent)
@@ -1016,7 +1022,7 @@ namespace MaterialSkin.Controls
             base.OnCreateControl();
 
             baseTextBox.BackColor = Parent.BackColor;
-            baseTextBox.ForeColor = SkinManager.GetMainTextColor();
+            baseTextBox.ForeColor = SkinManager.GetPrimaryTextColor();
         }
 
         private class BaseTextBox : TextBox

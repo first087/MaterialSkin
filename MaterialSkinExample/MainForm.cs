@@ -21,7 +21,30 @@ namespace MaterialSkinExample
             materialSkinManager.AddFormToManage(this);
 			materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
 			materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+
+			// Add dummy data to the listview
+	        seedListView();
         }
+
+	    private void seedListView()
+	    {
+			//Define
+			var data = new[]
+	        {
+		        new []{"Lollipop", "392", "0.2", "0"},
+				new []{"KitKat", "518", "26.0", "7"},
+				new []{"Ice cream sandwich", "237", "9.0", "4.3"},
+				new []{"Jelly Bean", "375", "0.0", "0.0"},
+				new []{"Honeycomb", "408", "3.2", "6.5"}
+	        };
+
+			//Add
+			foreach (string[] version in data)
+			{
+				var item = new ListViewItem(version);
+				materialListView1.Items.Add(item);
+			}
+	    }
 
         private void materialButton1_Click(object sender, EventArgs e)
         {

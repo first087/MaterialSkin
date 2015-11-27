@@ -164,7 +164,7 @@ namespace MaterialSkin.Controls
             g.DrawString(
                 Text, 
                 SkinManager.ROBOTO_MEDIUM_10,
-                Enabled ? SkinManager.GetMainTextBrush() : SkinManager.GetDisabledOrHintBrush(),
+                Enabled ? SkinManager.GetPrimaryTextBrush() : SkinManager.GetDisabledOrHintBrush(),
                 boxOffset + TEXT_OFFSET, Height / 2 - stringSize.Height / 2);
 
             // dispose used paint objects
@@ -177,7 +177,7 @@ namespace MaterialSkin.Controls
             var checkMark = new Bitmap(CHECKBOX_SIZE, CHECKBOX_SIZE);
             var g = Graphics.FromImage(checkMark);
 
-            // clear everything, transparant
+            // clear everything, transparent
             g.Clear(Color.Transparent);
 
             // draw the checkmark lines
